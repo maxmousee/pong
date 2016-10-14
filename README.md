@@ -1,8 +1,4 @@
-# Pong: an HTML5 Canvas 2D Game
-
-The first project of [The Great Code Club](http://www.greatcodeclub.com/).
-
-![ZOMGBBQ!! Pong!](https://raw2.github.com/codedinc/pong/master/preview.png)
+# Pong: an HTML5 Canvas 2D Game adapted for touchscreen and non-touch devices
 
 ### Setting up your dev environment
 
