@@ -23,7 +23,7 @@ Paddle.prototype.update = function() {
 
 function Player() {
   Paddle.call(this)
-  
+
   this.x = 20
 
   this.speed = 15
@@ -50,7 +50,7 @@ function Bot() {
 
   this.x = game.width - this.width - 20
 
-  this.speed = 5
+  this.speed = 4
 }
 
 Bot.prototype = Object.create(Paddle.prototype)
@@ -66,4 +66,3 @@ Bot.prototype.update = function() {
 
   Paddle.prototype.update.apply(this, arguments)
 }
-

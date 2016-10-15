@@ -57,7 +57,7 @@ Game.prototype.draw = function() {
 //     var self = this,
 //         fps = 60,
 //         interval = 1000 / fps // ms per frame
-//   
+//
 //     setInterval(function() {
 //       self.update()
 //       self.draw()
@@ -69,7 +69,7 @@ Game.prototype.start = function() {
   var self = this
 
   this.lastUpdateTime = new Date().getTime()
-  
+
   // The loop
   onFrame(function() {
     // A turn in the loop is called a step.
@@ -81,7 +81,7 @@ Game.prototype.start = function() {
 }
 
 // Instead of relying on a timer, we use a special browser function called
-// `requestAnimationFrame(callback)`. It calls the `callback` at interval 
+// `requestAnimationFrame(callback)`. It calls the `callback` at interval
 // synced with the display refresh rate.
 // More info at:
 // https://developer.mozilla.org/en/docs/Web/API/window.requestAnimationFrame
@@ -96,14 +96,14 @@ var onFrame = function(callback) {
   } else {
     // requestAnimationFrame is not supported by all browsers. We fall back to
     // a timer.
-    var fps = 60
+    var fps = 30
     setInterval(callback, 1000 / fps)
   }
 }
 
 // With fixed time steps, each update is done at a fixed interval.
 Game.prototype.fixedTimeStep = function() {
-  var fps = 60,
+  var fps = 30,
       interval = 1000 / fps,
       updated = false
 
@@ -125,7 +125,7 @@ Game.prototype.fixedTimeStep = function() {
 // time step would normally do.
 Game.prototype.variableTimeStep = function() {
   var currentTime = new Date().getTime(),
-      fps = 60,
+      fps = 30,
       interval = 1000 / fps,
       timeDelta = currentTime - this.lastUpdateTime,
       percentageOfInterval = timeDelta / interval
