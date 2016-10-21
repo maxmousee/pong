@@ -1,27 +1,57 @@
 function Game(canvas) {
-  var self = this
+  var self = this;
 
-  this.context = canvas.getContext("2d")
-  this.width = canvas.width
-  this.height = canvas.height
+  this.context = canvas.getContext("2d");
+  this.width = canvas.width;
+  this.height = canvas.height;
 
   // Keep track of key states
   // Eg.:
   //   game.keyPressed.up === true  // while UP key is pressed)
   //   game.keyPressed.up === false // when UP key is released)
-  this.keyPressed = {}
+  this.keyPressed = {};
+
+  $('#down').click(function(){
+    // Convert key code to key name
+    var keyName = 'down';
+    if (keyName) {
+      // eg.: `self.keyPressed.up = true` on keydown
+      // Will be set to `false` on keyup
+      self.keyPressed[keyName] = 'keydown';
+    }
+  });
+
+  $('#up').click(function(){
+    // Convert key code to key name
+    var keyName = 'up';
+    if (keyName) {
+      // eg.: `self.keyPressed.up = true` on keydown
+      // Will be set to `false` on keyup
+      self.keyPressed[keyName] = 'keydown';
+    }
+  });
+
+  $('#up').mouseup(function(){
+    // Convert key code to key name
+    self.keyPressed = {};
+  });
+
+  $('#down').mouseup(function(){
+    // Convert key code to key name
+    self.keyPressed = {};
+  });
 
   $(canvas).on('keydown keyup', function(e) {
     // Convert key code to key name
-    var keyName = Game.keys[e.which]
+    var keyName = Game.keys[e.which];
 
     if (keyName) {
       // eg.: `self.keyPressed.up = true` on keydown
       // Will be set to `false` on keyup
-      self.keyPressed[keyName] = e.type === 'keydown'
-      e.preventDefault()
+      self.keyPressed[keyName] = e.type === 'keydown';
+      e.preventDefault();
     }
-  })
+  });
 }
 
 // Some key code to key name mappings
@@ -35,15 +65,15 @@ Game.keys = {
 
 Game.prototype.update = function() {
   this.entities.forEach(function(entity) {
-    if (entity.update) entity.update()
+    if (entity.update) entity.update();
   })
 }
 
 Game.prototype.draw = function() {
-  var self = this
+  var self = this;
 
   this.entities.forEach(function(entity) {
-    if (entity.draw) entity.draw(self.context)
+    if (entity.draw) entity.draw(self.context);
   })
 }
 
@@ -66,15 +96,15 @@ Game.prototype.draw = function() {
 
 // Here is a real game loop. Similar to the ones you'll find in most games.
 Game.prototype.start = function() {
-  var self = this
+  var self = this;
 
-  this.lastUpdateTime = new Date().getTime()
+  this.lastUpdateTime = new Date().getTime();
 
   // The loop
   onFrame(function() {
     // A turn in the loop is called a step.
     // Two possible modes:
-    self.fixedTimeStep()
+    self.fixedTimeStep();
     // or
     // self.variableTimeStep()
   })
@@ -88,16 +118,16 @@ Game.prototype.start = function() {
 var onFrame = function(callback) {
   if (window.requestAnimationFrame) {
     requestAnimationFrame(function() {
-      callback()
+      callback();
       // requestAnimationFrame only calls our callback once, we need to
       // schedule the next call ourself.
-      onFrame(callback)
+      onFrame(callback);
     })
   } else {
     // requestAnimationFrame is not supported by all browsers. We fall back to
     // a timer.
-    var fps = 30
-    setInterval(callback, 1000 / fps)
+    var fps = 30;
+    setInterval(callback, 1000 / fps);
   }
 }
 
@@ -105,19 +135,19 @@ var onFrame = function(callback) {
 Game.prototype.fixedTimeStep = function() {
   var fps = 30,
       interval = 1000 / fps,
-      updated = false
+      updated = false;
 
   // While we're not up to date ...
   while (this.lastUpdateTime < new Date().getTime()) {
-    this.update()
-    updated = true
+    this.update();
+    updated = true;
     // We jump at fixed intervals until we catch up to the current time.
-    this.lastUpdateTime += interval
+    this.lastUpdateTime += interval;
   }
 
   // No need to draw if nothing was updated
-  if (updated) this.draw()
-  updated = false
+  if (updated) this.draw();
+  updated = false;
 }
 
 // With a variable time steps, update are done whenever we need to draw.
@@ -128,7 +158,7 @@ Game.prototype.variableTimeStep = function() {
       fps = 30,
       interval = 1000 / fps,
       timeDelta = currentTime - this.lastUpdateTime,
-      percentageOfInterval = timeDelta / interval
+      percentageOfInterval = timeDelta / interval;
 
   // NOTE: This requires changing the update function
   // to support partial updating.
@@ -141,10 +171,10 @@ Game.prototype.variableTimeStep = function() {
   //   }
   //
   // Also don't forget to pass that argument in Game.prototype.update.
-  this.update(percentageOfInterval)
-  this.draw()
+  this.update(percentageOfInterval);
+  this.draw();
 
-  this.lastUpdateTime = new Date().getTime()
+  this.lastUpdateTime = new Date().getTime();
 }
 
 ;//
