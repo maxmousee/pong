@@ -40,7 +40,7 @@ Player.prototype.update = function() {
   } else {
     this.yVelocity = 0;
   }
-
+  game.keyPressed = {};
   Paddle.prototype.update.apply(this, arguments);
 }
 

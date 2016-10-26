@@ -11,34 +11,48 @@ function Game(canvas) {
   //   game.keyPressed.up === false // when UP key is released)
   this.keyPressed = {};
 
-  $('#down').click(function(){
+  $('#down').click(function(e){
     // Convert key code to key name
     var keyName = 'down';
     if (keyName) {
       // eg.: `self.keyPressed.up = true` on keydown
       // Will be set to `false` on keyup
       self.keyPressed[keyName] = 'keydown';
+      e.preventDefault();
     }
   });
 
-  $('#up').click(function(){
+  $('#up').click(function(e){
     // Convert key code to key name
     var keyName = 'up';
     if (keyName) {
       // eg.: `self.keyPressed.up = true` on keydown
       // Will be set to `false` on keyup
       self.keyPressed[keyName] = 'keydown';
+      e.preventDefault();
     }
   });
 
-  $('#up').mouseup(function(){
+  $('#up').mouseup(function(e){
     // Convert key code to key name
-    self.keyPressed = {};
+    var keyName = 'up';
+    if (keyName) {
+      // eg.: `self.keyPressed.up = true` on keydown
+      // Will be set to `false` on keyup
+      self.keyPressed[keyName] = 'keyup';
+      e.preventDefault();
+    }
   });
 
-  $('#down').mouseup(function(){
+  $('#down').mouseup(function(e){
     // Convert key code to key name
-    self.keyPressed = {};
+    var keyName = 'down';
+    if (keyName) {
+      // eg.: `self.keyPressed.up = true` on keydown
+      // Will be set to `false` on keyup
+      self.keyPressed[keyName] = 'keyup';
+      e.preventDefault();
+    }
   });
 
   $(canvas).on('keydown keyup', function(e) {
