@@ -49,7 +49,7 @@ function Bot() {
 
   this.x = game.width - this.width - 20;
 
-  this.speed = 4;
+  this.speed = 6;
 }
 
 Bot.prototype = Object.create(Paddle.prototype);
