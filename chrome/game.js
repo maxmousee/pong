@@ -96,14 +96,14 @@ var onFrame = function(callback) {
   } else {
     // requestAnimationFrame is not supported by all browsers. We fall back to
     // a timer.
-    var fps = 30;
+    var fps = 60;
     setInterval(callback, 1000 / fps);
   }
 }
 
 // With fixed time steps, each update is done at a fixed interval.
 Game.prototype.fixedTimeStep = function() {
-  var fps = 30,
+  var fps = 60,
       interval = 1000 / fps,
       updated = false;
 
@@ -125,7 +125,7 @@ Game.prototype.fixedTimeStep = function() {
 // time step would normally do.
 Game.prototype.variableTimeStep = function() {
   var currentTime = new Date().getTime(),
-      fps = 30,
+      fps = 60,
       interval = 1000 / fps,
       timeDelta = currentTime - this.lastUpdateTime,
       percentageOfInterval = timeDelta / interval;
