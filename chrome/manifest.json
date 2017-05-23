@@ -3,7 +3,7 @@
   "name": "Simple PONG",
   "short_name": "PONG",
   "description": "Simple and lightweight PONG Game written in JavaScript using jQuery",
-  "version": "2.0",
+  "version": "2.1",
   "icons": { "16": "icon.png",
              "32": "icon.png",
              "48": "icon.png",
