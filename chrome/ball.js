@@ -34,7 +34,7 @@ Ball.prototype.reset = function() {
       angle = Math.floor(Math.random() * (maxAngle - minAngle + 1)) + minAngle;
   // Convert angle to x,y coordinates
   var radian = Math.PI / 180,
-      speed = 7;
+      speed = 5;
   this.xVelocity = speed * Math.cos(angle * radian);
   this.yVelocity = speed * Math.sin(angle * radian);
 
