@@ -26,7 +26,7 @@ function Player() {
 
   this.x = 20;
 
-  this.speed = 15;
+  this.speed = 10;
 }
 
 Player.prototype = Object.create(Paddle.prototype);
@@ -49,7 +49,7 @@ function Bot() {
 
   this.x = game.width - this.width - 20;
 
-  this.speed = 5;
+  this.speed = 10;
 }
 
 Bot.prototype = Object.create(Paddle.prototype);

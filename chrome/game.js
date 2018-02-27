@@ -55,7 +55,7 @@ Game.prototype.draw = function() {
 //
 //   Game.prototype.start = function() {
 //     var self = this,
-//         fps = 60,
+//         fps = 100,
 //         interval = 1000 / fps // ms per frame
 //
 //     setInterval(function() {
