@@ -1,4 +1,4 @@
-# Pong: an HTML5 Canvas 2D Game adapted for touchscreen and non-touch devices
+# Pong: an HTML5 Canvas 2D Game
 
 ### Setting up your dev environment
 
